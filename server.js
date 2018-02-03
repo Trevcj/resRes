@@ -40,7 +40,7 @@ app.get("/", function(req, res) {
 	res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get("/data", function(req, res) {
+app.get("/api", function(req, res) {
 	return res.json(reservations);
 });
 

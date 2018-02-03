@@ -17,14 +17,14 @@ app.use(bodyParser.json());
 // =============================================================
 var reservations = [
   {
-    name: "Yoda",
+    name: "Dillon",
     time: "5:30",
     phone: "520.989.2345",
     email: "fake@email.com",
     request: "I need food!"
   },
   {
-    name: "Darth Maul",
+    name: "Trevor",
     time: "7:30",
     phone: "602.435.6753",
     email: "new@fake.com",
@@ -51,16 +51,19 @@ app.get("/view", function(req, res) {
 });
 
 
-// Search for Specific reservation (or all reservations) - provides JSON
-app.get("/api/:reservations?", function(req, res) {
-  var chosen = req.params.reservations;
-  console.log(chosen);
+
+// Create New reservations - takes in JSON input
+app.post("/api/new", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newReservation = req.body;
+
+  console.log(newReservation);
+
+  reservations.push(newReservation);
+
+  res.json(newReservation);
 });
-
-// Create New Characters - takes in JSON input
-// app.post("/api/new", function(req, res) {
-
-// });
 
 // Starts the server to begin listening
 // =============================================================

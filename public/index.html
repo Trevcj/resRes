@@ -35,13 +35,24 @@
 				margin: auto;
 				margin-top: 65px;
 				grid-template-columns: 30% 70%;
+				grid-column-gap: 10px;
 			}
 				.sideNav {
 					grid-column: 1/2;
 					padding: 10px;
 					border: solid #ccc 1px;
 					border-radius: 5px;
-					margin:
+				}
+				.reservations {
+					grid-column: 2/3;
+					padding: 10px;
+					border: solid #ccc 1px;
+					border-radius: 5px;
+				}
+				#mainBodyText{
+					font-size: 27px;
+					text-align: center;
+					text-decoration: underline;
 				}
 			.footer {
 				grid-row: 3/4;
@@ -87,6 +98,13 @@
 				    <textarea class="form-control" id="specialRequest" rows="3"></textarea>
 				  </div>
 				</form>
+				<button type="submit" class="btn btn-primary">Reserve Now</button>
+			</div>
+			<div class="reservations">
+				<p id="mainBodyText">Tables</p>
+				<div class="tables">
+					
+				</div>
 			</div>
 		</div>
 		

@@ -18,15 +18,17 @@ app.use(bodyParser.json());
 var reservations = [
   {
     name: "Yoda",
+    time: "5:30",
     phone: "520.989.2345",
     email: "fake@email.com",
-    uid: 234567
+    request: "I need food!"
   },
   {
     name: "Darth Maul",
-    phone: "602.435.67e3",
+    time: "7:30",
+    phone: "602.435.6753",
     email: "new@fake.com",
-    uid: 987743
+    request: "I need food!"
   }
 ];
 
@@ -45,7 +47,7 @@ app.get("/form", function(req, res) {
 app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "public", "view.html"));
   console.log(reservations);
-  
+
 });
 
 

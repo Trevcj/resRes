@@ -61,7 +61,7 @@ app.post("/api/new", function(req, res) {
 
   reservations.push(newReservation);
 
-  res.json(newReservation);
+  res.json(reservations);
 });
 
 // Starts the server to begin listening

@@ -122,18 +122,18 @@
 				    <textarea class="form-control" id="specialRequest" rows="3"></textarea>
 				  </div>
 				</form>
-				<button type="submit" class="btn btn-primary">Reserve Now</button>
+				<button type="submit" class="btn btn-primary" id="add-btn">Reserve Now</button>
 			</div>
 			<div class="reservations">
 				<div class="top">
 					<p id="mainBodyText">Reservations</p>
 				</div>	
 				<div class="reserved">
-					<p id="mainBodyTextSm">Reserved</p>
+					<p id="mainBodyTextRes">Reserved</p>
 
 				</div>
 				<div class="waiting">
-					<p id="mainBodyTextSm">Waiting List</p>
+					<p id="mainBodyTextWait">Waiting List</p>
 					
 				</div>
 			</div>
@@ -145,6 +145,124 @@
 	</div>
 	<script type="text/javascript">
 		
+$.get("/data", function(data) {
+      console.log(data);
+      if(data.length<5){
+	      for (var i = 0; i < data.length; i++) {
+	        var wellSection = $("<div>");
+	        wellSection.addClass("well");
+	        wellSection.attr("id", "character-well-" + i);
+	        $("#mainBodyTextRes").append(wellSection);
+
+	        $("#character-well-" + i).append("<h2>Name:" + data[i].name + "</h2>");
+	        $("#character-well-" + i).append("<h3>Time: " + data[i].time + "</h4>");
+	        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+	        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+	        $("#character-well-" + i).append("<h3>Request: " + data[i].request + "</h4>");
+	      }
+	      
+      }
+      else{
+          for (var i = 0; i < 5; i++) {
+	        var wellSection = $("<div>");
+	        wellSection.addClass("well");
+	        wellSection.attr("id", "character-well-" + i);
+	        $("#mainBodyTextRes").append(wellSection);
+
+	        $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
+	        $("#character-well-" + i).append("<h3>Time: " + data[i].time + "</h4>");
+	        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+	        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+	        $("#character-well-" + i).append("<h3>Request: " + data[i].request + "</h4>");
+	      }
+	      for (var i = 5; i < data.length; i++) {
+	        var wellSection = $("<div>");
+	        wellSection.addClass("well");
+	        wellSection.attr("id", "character-well-" + i);
+	        $("#mainBodyTextRes").append(wellSection);
+
+	        $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
+	        $("#character-well-" + i).append("<h3>Time: " + data[i].time + "</h4>");
+	        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+	        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+	        $("#character-well-" + i).append("<h3>Request: " + data[i].request + "</h4>");
+	      }
+
+      }
+});
+
+$("#add-btn").on("click", function(event) {
+      event.preventDefault();
+
+      var newRes = {
+        name: $("#name").val().trim(),
+        Time: $("#resTime").val().trim(),
+        Phone: $("#phoneNum").val().trim(),
+        Email: $("#email").val().trim(),
+        Request: $("#specialRequest").val().trim(),
+      };
+
+      // Question: What does this code do??
+      $.post("/api/new", newRes)
+      .then(function(data) {
+        console.log(data);
+        if(data.length<5){
+        alert("Adding you to Reservation...");
+         for (var i = 0; i < 5; i++) {
+	        var wellSection = $("<div>");
+	        wellSection.addClass("well");
+	        wellSection.attr("id", "character-well-" + i);
+	        $("#mainBodyTextRes").append(wellSection);
+
+	        $("#character-well-" + i).append("<h2>Name:" + data[i].name + "</h2>");
+	        $("#character-well-" + i).append("<h3>Time: " + data[i].time + "</h4>");
+	        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+	        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+	        $("#character-well-" + i).append("<h3>Request: " + data[i].request + "</h4>");
+	      }
+
+
+	    }else{
+	    	 alert("Adding you to WaitList...");
+            for (var i = 0; i < 5; i++) {
+	        var wellSection = $("<div>");
+	        wellSection.addClass("well");
+	        wellSection.attr("id", "character-well-" + i);
+	        $("#mainBodyTextRes").append(wellSection);
+
+	        $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
+	        $("#character-well-" + i).append("<h3>Time: " + data[i].time + "</h4>");
+	        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+	        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+	        $("#character-well-" + i).append("<h3>Request: " + data[i].request + "</h4>");
+	      }
+	      for (var i = 5; i < data.length; i++) {
+	        var wellSection = $("<div>");
+	        wellSection.addClass("well");
+	        wellSection.attr("id", "character-well-" + i);
+	        $("#mainBodyTextRes").append(wellSection);
+
+	        $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
+	        $("#character-well-" + i).append("<h3>Time: " + data[i].time + "</h4>");
+	        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+	        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+	        $("#character-well-" + i).append("<h3>Request: " + data[i].request + "</h4>");
+	      }
+
+	    }
+      });
+    
+
+    });
+
+
+
+
+
+
+
+
+
 	</script>
 	
 

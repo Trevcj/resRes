@@ -13,6 +13,22 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// (DATA)
+// =============================================================
+var reservations = [
+  {
+    name: "Yoda",
+    phone: "520.989.2345",
+    email: "fake@email.com",
+    uid: 234567
+  },
+  {
+    name: "Darth Maul",
+    phone: "602.435.67e3",
+    email: "new@fake.com",
+    uid: 987743
+  }
+];
 
 // Routes
 // =============================================================
@@ -28,55 +44,21 @@ app.get("/form", function(req, res) {
 
 app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "public", "view.html"));
+  console.log(reservations);
+  
 });
 
-// (DATA)
-// =============================================================
-var reservations = [
-  {
-    routeName: "yoda",
-    name: "Yoda",
-    role: "Jedi Master",
-    age: 900,
-    forcePoints: 2000
-  },
-  {
-    routeName: "darthmaul",
-    name: "Darth Maul",
-    role: "Sith Lord",
-    age: 200,
-    forcePoints: 1200
-  },
-  {
-    routeName: "obiwankenobi",
-    name: "Obi Wan Kenobi",
-    role: "Jedi Master",
-    age: 55,
-    forcePoints: 1350
-  }
-];
-// Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function(req, res) {
-  var chosen = req.params.characters;
 
-  if (chosen) {
-    console.log(chosen);
-
-    for (var i = 0; i < characters.length; i++) {
-      if (chosen === characters[i].routeName) {
-        return res.json(characters[i]);
-      }
-    }
-
-    return res.json(false);
-  }
-  return res.json(characters);
+// Search for Specific reservation (or all reservations) - provides JSON
+app.get("/api/:reservations?", function(req, res) {
+  var chosen = req.params.reservations;
+  console.log(chosen);
 });
 
 // Create New Characters - takes in JSON input
-app.post("/api/new", function(req, res) {
+// app.post("/api/new", function(req, res) {
 
-});
+// });
 
 // Starts the server to begin listening
 // =============================================================

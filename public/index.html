@@ -5,6 +5,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="https://fonts.googleapis.com/css?family=Lato|Sanchez" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<style type="text/css">
@@ -16,18 +18,35 @@
 		}
 			.nav {
 				grid-row: 1/2;
+				width: 100%;
 				position: fixed;
+				background-color: white;
 			}
 				#navText {
+					display: block;
 					font-size: 45px;
 					text-align: center;
-					margin:;
+					margin: auto;
 				}
 			.mainBody {
 				grid-row: 2/3;
+				display: grid;
+				width: 90%;
+				margin: auto;
+				margin-top: 65px;
+				grid-template-columns: 30% 70%;
 			}
+				.sideNav {
+					grid-column: 1/2;
+					padding: 10px;
+					border: solid #ccc 1px;
+					border-radius: 5px;
+					margin:
+				}
 			.footer {
 				grid-row: 3/4;
+				width: 100%;
+				position: absolute;
 			}
 
 	</style>
@@ -38,7 +57,37 @@
 		</div>
 		
 		<div class="mainBody">
-			
+			<div class="sideNav">
+				<form>
+				  <div class="form-group">
+				    <label for="name">Name for the reservation</label>
+				    <input type="text" class="form-control" id="name" placeholder="John Doe">
+				  </div>
+				  <div class="form-group">
+				    <label for="resTime">Select a time</label>
+				    <select class="form-control" id="resTime">
+				      <option>0:00</option>
+				      <option>5:00</option>
+				      <option>5:15</option>
+				      <option>6:45</option>
+				      <option>7:00</option>
+				      <option>7:30</option>
+				    </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="phoneNum">Phone Number</label>
+				    <input type="text" class="form-control" id="phoneNum" placeholder="555-555-5555">
+				  </div>
+				  <div class="form-group">
+				    <label for="email">Email address</label>
+				    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+				  </div>				  
+				  <div class="form-group">
+				    <label for="specialRequest">Special Request</label>
+				    <textarea class="form-control" id="specialRequest" rows="3"></textarea>
+				  </div>
+				</form>
+			</div>
 		</div>
 		
 		<div class="footer">

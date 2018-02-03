@@ -37,18 +37,17 @@ var reservations = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+	res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get("/form", function(req, res) {
-  res.sendFile(path.join(__dirname, "public", "form.html"));
+app.get("/data", function(req, res) {
+	return res.json(reservations);
 });
 
-app.get("/view", function(req, res) {
-  res.sendFile(path.join(__dirname, "public", "view.html"));
-  console.log(reservations);
-
-});
+// app.get("/view", function(req, res) {
+//   res.sendFile(path.join(__dirname, "public", "view.html"));
+//   console.log(reservations);
+// });
 
 
 

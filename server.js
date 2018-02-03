@@ -19,17 +19,42 @@ app.use(bodyParser.json());
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.get("/form", function(req, res) {
-  res.sendFile(path.join(__dirname, "form.html"));
+  res.sendFile(path.join(__dirname, "public", "form.html"));
 });
 
 app.get("/view", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "public", "view.html"));
 });
 
+// (DATA)
+// =============================================================
+var reservations = [
+  {
+    routeName: "yoda",
+    name: "Yoda",
+    role: "Jedi Master",
+    age: 900,
+    forcePoints: 2000
+  },
+  {
+    routeName: "darthmaul",
+    name: "Darth Maul",
+    role: "Sith Lord",
+    age: 200,
+    forcePoints: 1200
+  },
+  {
+    routeName: "obiwankenobi",
+    name: "Obi Wan Kenobi",
+    role: "Jedi Master",
+    age: 55,
+    forcePoints: 1350
+  }
+];
 // Search for Specific Character (or all characters) - provides JSON
 app.get("/api/:characters?", function(req, res) {
   var chosen = req.params.characters;

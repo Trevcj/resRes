@@ -48,9 +48,33 @@
 					padding: 10px;
 					border: solid #ccc 1px;
 					border-radius: 5px;
+					display: grid;
+					grid-template-columns: 50% 50%;
+					grid-template-rows: 10% 90%;
+					grid-column-gap: 10px;
 				}
+					.top{
+						grid-column: 1/3;
+					}				
+					.reserved {
+						grid-column: 1/2;
+						grid-row: 2/3;
+						padding: 10px;
+						
+					}
+					.waiting {
+						grid-column: 2/3;
+						grid-row: 2/3;
+						padding: 10px;
+						
+					}
 				#mainBodyText{
 					font-size: 27px;
+					text-align: center;
+					text-decoration: underline;
+				}
+				#mainBodyTextSm {
+					font-size: 20px;
 					text-align: center;
 					text-decoration: underline;
 				}
@@ -101,8 +125,15 @@
 				<button type="submit" class="btn btn-primary">Reserve Now</button>
 			</div>
 			<div class="reservations">
-				<p id="mainBodyText">Tables</p>
-				<div class="tables">
+				<div class="top">
+					<p id="mainBodyText">Reservations</p>
+				</div>	
+				<div class="reserved">
+					<p id="mainBodyTextSm">Reserved</p>
+
+				</div>
+				<div class="waiting">
+					<p id="mainBodyTextSm">Waiting List</p>
 					
 				</div>
 			</div>
